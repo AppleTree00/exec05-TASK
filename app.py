@@ -44,7 +44,7 @@ with st.sidebar:
 youtube_url = st.text_input("유튜브 영상 URL을 입력하세요:", placeholder="https://www.youtube.com/watch?v=...")
 
 if st.button("요약 및 번역 시작", type="primary"):
-    if not openai_api_key:
+    if not api_key:
         st.error("왼쪽 사이드바에서 OpenAI API Key를 먼저 입력해주세요.")
     elif not youtube_url:
         st.warning("유튜브 URL을 입력해주세요.")
@@ -67,7 +67,7 @@ if st.button("요약 및 번역 시작", type="primary"):
                     transcript = docs[0].page_content
                     
                     # 2. LangChain & OpenAI 설정
-                    llm = ChatOpenAI(temperature=0.3, model=model_name, api_key=openai_api_key)
+                    llm = ChatOpenAI(temperature=0.3, model=model_name, api_key=api_key)
                     
                     # 프롬프트 템플릿 생성
                     prompt = PromptTemplate.from_template(
