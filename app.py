@@ -31,6 +31,8 @@ st.markdown("""
 with st.sidebar:
     st.header("설정")
     # 환경 변수에 OPENAI_API_KEY가 있으면 자동으로 가져옵니다.
+    model_name = st.selectbox("OpenAI 모델 선택", ["gpt-4o-mini", "gpt-4o", "gpt-3.5-turbo"])
+    target_language = st.selectbox("번역할 언어", ["한국어", "영어", "일본어", "중국어"])
     api_key = st.text_input(
         "OpenAI API Key", 
         value=os.environ.get("OPENAI_API_KEY", ""), 
